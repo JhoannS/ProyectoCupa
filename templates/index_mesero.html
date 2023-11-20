@@ -1,0 +1,115 @@
+{% extends './layout.html' %}
+
+{% block title %}Bienvenido, Toma de pedidos{% endblock %}
+
+{% block customcss %}
+<link rel="stylesheet" href="{{url_for("static",filename="css/index_admin.css")}}">
+{% endblock %}
+
+{% block body %}
+  <div class="loader_bg">
+    <div class="leap-frog">
+      <div class="leap-frog__dot"></div>
+      <div class="leap-frog__dot"></div>
+      <div class="leap-frog__dot"></div>
+    </div>
+  </div>
+  <body id="body-pd">
+    <div class="l-navbar" id="navbar">
+      <nav class="nav">
+        <div>
+          <div class="nav__brand">
+            <img src="{{url_for('static',filename="img/logo.jpg")}}" alt="Logo" class="photoNav" />
+            <a href="/" class="nav__logo">Cupa Burger</a>
+          </div>
+        </div>
+  
+        <div class="nav__list">
+          <a href="/index" class="nav__link">
+            <ion-icon name="home-outline" class="nav__icon"></ion-icon>
+            <span class="nav__name">Inicio</span>
+          </a>
+  
+  
+          <a href="/gestionarPedidos">
+            <div class="nav__link active" id="usuario">
+              <ion-icon name="document-text-outline" class="nav__icon"></ion-icon>
+              <span class="nav__name">Gestionar Pedidos</span>
+            </div>
+          </a>
+  
+        <a href="../index.html" class="nav__link">
+          <ion-icon name="log-out-outline" class="nav__icon"></ion-icon>
+          <span class="nav__name">Cerrar sesion</span>
+        </a>
+      </nav>
+    </div>
+
+    <header>
+      <ion-icon name="reorder-three" class="nav__toggle" id="nav-toggle"></ion-icon>
+      
+      
+      <div class="showHora">
+        <div class="time">
+          <span id="hora">00:00</span>
+        </div>
+      </div>
+    </header>
+
+    <section>
+      <div class="contenido">
+          <h2>Gestiona Pedidos</h2>
+          <div class="categorias">
+              <a href="/pedidosMesa">
+              <div class="card" id="citas">
+                  <p class="card-title">Pedidos en Mesa</p>
+                  <p class="small-desc">
+                    Son los pedidos que se ejecutaron en tienda fisica. 
+                  </p>
+                  <div class="go-corner">
+                    <div class="go-arrow">→</div>
+                  </div></a>
+                </div>
+
+                <div class="categorias">
+                  <a href="/pedidosLinea">
+                  <div class="card" id="citas">
+                    <p class="card-title">Pedidos en Linea</p>
+                    <p class="small-desc">
+                      Son los pedidos que se ejecutaron en linea.
+                      </p>
+                      <div class="go-corner">
+                        <div class="go-arrow">→</div>
+                      </div></a>
+                    </div>
+
+                  
+                <a href="Historial_pedidos.html">
+                <div class="card" id="usuario">
+                  <p class="card-title">Historial de Pedidos</p>
+                  <p class="small-desc">
+                    Aqui encontraras pedidos pasdos (mesa y en linea).
+                  </p>
+                  <div class="go-corner">
+                    <div class="go-arrow">→</div>
+                  </div>
+                </div>
+              </a>
+          </div>
+      </div>
+
+  </section>
+
+  {% block script %}
+  <script src="{{url_for("static",filename="js/main.js")}}"></script>
+
+  <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        setTimeout(function () {
+            $(".loader_bg").fadeToggle();
+        }, 1000);
+    </script>
+  {% endblock %}
+
+  {% endblock %}

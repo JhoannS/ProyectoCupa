@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    {% block customcss %}{% endblock %}
+    <link rel="icon" src="{{url_for("static",filename="img/logo_cupa.png")}}">
+</head>
+
+<body>
+
+    {% block body %}
+    
+
+    
+
+
+    {% block script %}
+    
+    {% endblock %}
+    
+    
+    {% block scripts %}{% endblock %}
+
+    {% endblock %}
+</body>
+
+</html>

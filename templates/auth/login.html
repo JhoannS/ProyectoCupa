@@ -1,0 +1,127 @@
+{% extends './layout.html' %}
+
+{% block title %} Cupa Burger | Login {% endblock %}
+
+{% block customcss %}
+<link rel="stylesheet" href="{{url_for('static',filename="css/login.css")}}">
+{% endblock %}
+
+{% block body %}
+
+<body>
+  <main>
+    <div class="box">
+      <div class="inner-box">
+        <div class="forms-wrap">
+          <form autocomplete="off" class="sign-in-form" action="/login" method="post">
+            <div class="logo">
+              <div class="logo-eslogan">
+                <h4>Cupa Burger</h4>
+                <p>Las mejores Platos del sector.</p>
+              </div>
+            </div>
+            <div class="heading">
+              <h2>Bievenido de vuelta</h2>
+              <h3>Inicia Sesion</h3>
+            </div>
+
+            <div class="actual-form">
+              <div class="input-container">
+                <input type="hidden" name="csrf_token" value="{{csrf_token() }}">
+                <input class="input" name="usuario" type="text" type="email">
+                <label class="label" for="input">Digita tu Usuario</label>
+                <div class="topline"></div>
+                <div class="underline"></div>
+              </div>
+              <br>
+              <div class="input-container">
+                <input class="input" name="contraseña" type="text">
+                <label class="label" for="input">Digita tu Contraseña</label>
+                <div class="topline"></div>
+                <div class="underline"></div>
+              </div>
+              <br>
+              {% with messages = get_flashed_messages() %}
+
+              {% if messages %}
+              <br>
+              {% for message in messages %}
+                <p>{{ messages }}</p>
+              {% endfor %}
+              {% endif %}
+
+              {% endwith %}
+              <br>
+              <input type="submit" value="Entrar" class="sign-btn" />
+              <button><a href="#" class="toggle">Crear Cuenta</a></button>
+
+
+              <p class="text">
+                ¿Olvidaste los datos de tu cuenta? Conecta con el
+                <a href="#">Servidor</a>
+              </p>
+            </div>
+          </form>
+
+          <form action="/" autocomplete="off" class="sign-up-form">
+            <div class="logo">
+              <div class="logo-eslogan">
+                <h4>Cupa Burger</h4>
+                <p>Los mejores platos del sector</p>
+              </div>
+            </div>
+            <div class="heading">
+              <h2>Empecemos ahora!</h2>
+              <h3>Crear cuenta</h3>
+            </div>
+
+            <div class="actual-form">
+              <div class="input-container">
+                <input class="input" name="text" type="text">
+                <label class="label" for="input">Digita tu Nombre</label>
+                <div class="topline"></div>
+                <div class="underline"></div>
+              </div>
+              <br>
+              <div class="input-container">
+                <input class="input" name="text" type="text">
+                <label class="label" for="input">Digita tu Usuario</label>
+                <div class="topline"></div>
+                <div class="underline"></div>
+              </div>
+              <br>
+              <div class="input-container">
+                <input class="input" name="text" type="text">
+                <label class="label" for="input">Digita tu Contraseña</label>
+                <div class="topline"></div>
+                <div class="underline"></div>
+              </div><br>
+              <input type="submit" value="Crear" class="sign-btn" />
+              <button><a href="#" class="toggle">Ya tengo una cuenta</a></button>
+
+
+              <p class="text">
+                Al registrarme, acepto los <a href="#">Términos de servicio y la Política de privacidad.</a>
+
+              </p>
+            </div>
+          </form>
+        </div>
+
+        <div class="carousel">
+          <div class="images-wrapper">
+            <img src="{{url_for('static',filename="img/logo.jpg")}}" class="image img-1 show" alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+  {% block script %}
+  <script src="{{url_for('static',filename=" js/app.js")}}"></script>
+  {% endblock %}
+  
+  {% endblock %}
+
+  

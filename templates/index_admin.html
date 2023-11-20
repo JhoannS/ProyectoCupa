@@ -1,0 +1,149 @@
+{% extends './layout.html' %}
+
+{% block title %}Bienvenido {{ current_user.Nombre }}{% endblock %}
+
+{% block customcss %}
+<link rel="stylesheet" href="{{url_for("static",filename="css/index_admin.css")}}">
+{% endblock %}
+
+{% block body %}
+  <div class="loader_bg">
+    <div class="leap-frog">
+      <div class="leap-frog__dot"></div>
+      <div class="leap-frog__dot"></div>
+      <div class="leap-frog__dot"></div>
+    </div>
+  </div>
+  <body id="body-pd">
+    <div class="l-navbar" id="navbar">
+      <nav class="nav">
+        <div>
+          <div class="nav__brand">
+            <img src="{{url_for('static',filename="img/logo.jpg")}}" alt="Logo" class="photoNav" />
+            <a href="index_admin.html" class="nav__logo">Cupa Burger</a>
+          </div>
+        </div>
+
+        <div class="nav__list">
+          <a href="/index" class="nav__link active">
+            <ion-icon name="home-outline" class="nav__icon"></ion-icon>
+            <span class="nav__name">Inicio</span>
+          </a>
+
+
+          <a href="gestionarPedidos">
+            <div class="nav__link" id="usuario">
+              <ion-icon name="document-text-outline" class="nav__icon"></ion-icon>
+              <span class="nav__name">Gestionar Pedidos</span>
+            </div>
+          </a>
+
+          <a href="/gestionarProductos">
+            <div class="nav__link collapse" id="instructores">
+              <ion-icon name="grid-outline" class="nav__icon"></ion-icon>
+              <span class="nav__name">Gestionar Productos</span>
+            </div>
+          </a>
+
+          <a href="/gestionarUsuarios">
+            <div class="nav__link collapse" id="instructores">
+              <ion-icon name="people" class="nav__icon"></ion-icon>
+              <span class="nav__name">Gestionar Usuarios</span>
+            </div>
+          </a>
+
+
+          <a href="01-ListaInstructores.html">
+            <div class="nav__link collapse" id="instructores">
+              <ion-icon name="receipt-outline" class="nav__icon"></ion-icon>
+              <span class="nav__name">Facturador</span>
+            </div>
+          </a>
+
+          <a href="#" class="nav__link">
+            <ion-icon name="settings-outline" class="nav__icon"></ion-icon>
+            <span class="nav__name">Ajustes</span>
+          </a>
+        </div>
+
+        <a href="{{ url_for('logout') }}" class="nav__link">
+          <ion-icon name="log-out-outline" class="nav__icon"></ion-icon>
+          <span class="nav__name">Cerrar sesion</span>
+        </a>
+      </nav>
+    </div>
+
+    <header>
+      <ion-icon name="reorder-three" class="nav__toggle" id="nav-toggle"></ion-icon>
+        
+      
+      <div class="showHora">
+        <div class="time">
+          <span id="hora">00:00</span>
+        </div>
+      </div>
+    </header>
+
+    <section>
+      <div class="contenido">
+          <h2>Bienvenido {{ current_user.Nombre }}, este es tu Dashboard</h2>
+          <div class="categorias">
+              <a href="/gestionarPedidos">
+              <div class="card" id="citas">
+                  <p class="card-title">Gestionar Pedidos</p>
+                  <p class="small-desc">
+                    Aqui podras gestionar todos los Pedidos, eliminar, actualizar, visualizar. <br><br>
+                    haz Click y empecemos. 
+                  </p>
+                  <div class="go-corner">
+                    <div class="go-arrow">→</div>
+                  </div></a>
+                </div>
+
+                <div class="categorias">
+                  <a href="/gestionarProductos">
+                  <div class="card" id="citas">
+                      <p class="card-title">Gestionar Productos</p>
+                      <p class="small-desc">
+                        Aqui podras gestionar todos los Productos, eliminar, actualizar, visualizar.<br><br>
+                        haz Click y empecemos. 
+                      </p>
+                      <div class="go-corner">
+                        <div class="go-arrow">→</div>
+                      </div></a>
+                    </div>
+
+                    
+
+                <a href="/gestionarUsuarios">
+                <div class="card" id="usuario">
+                  <p class="card-title">Gestionar Usuarios</p>
+                  <p class="small-desc">
+                      Aqui podras gestionar los usuarios activos, añadir, eliminar, actualizar, visualizar. <br><br>
+                      haz Click y empecemos. 
+                  </p>
+                  <div class="go-corner">
+                    <div class="go-arrow">→</div>
+                  </div>
+                </div>
+              </a>
+          </div>
+      </div>
+
+  </section>
+
+
+  {% block script %}
+  <script src="{{url_for("static",filename="js/main.js")}}"></script>
+
+  <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        setTimeout(function () {
+            $(".loader_bg").fadeToggle();
+        }, 1000);
+    </script>
+  {% endblock %}
+  
+
+  {% endblock %}

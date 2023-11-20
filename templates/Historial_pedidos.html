@@ -1,0 +1,294 @@
+{% extends './layout.html' %}
+
+{% block title %}Gestion de Pedidos | Historial{% endblock %}
+
+{% block customcss %}
+<link rel="stylesheet" href="{{url_for("static",filename="css/index_admin.css")}}">
+{% endblock %}
+
+{% block body %}
+
+<div class="loader_bg">
+  <div class="leap-frog">
+    <div class="leap-frog__dot"></div>
+    <div class="leap-frog__dot"></div>
+    <div class="leap-frog__dot"></div>
+  </div>
+</div>
+
+<body id="body-pd">
+  <div class="l-navbar" id="navbar">
+    <nav class="nav">
+      <div>
+        <div class="nav__brand">
+          <img src="../assets/img/logo.jpg" alt="Logo" class="photoNav" />
+          <a href="index_admin.html" class="nav__logo">Cupa Burger</a>
+        </div>
+      </div>
+
+      <div class="nav__list">
+        <a href="index_admin.html" class="nav__link">
+          <ion-icon name="home-outline" class="nav__icon"></ion-icon>
+          <span class="nav__name">Inicio</span>
+        </a>
+
+
+        <a href="Gestionar_pedidos.html">
+          <div class="nav__link active" id="usuario">
+            <ion-icon name="document-text-outline" class="nav__icon"></ion-icon>
+            <span class="nav__name">Gestionar Pedidos</span>
+          </div>
+        </a>
+
+        <a href="01-ListaInstructores.html">
+          <div class="nav__link collapse" id="instructores">
+            <ion-icon name="grid-outline" class="nav__icon"></ion-icon>
+            <span class="nav__name">Gestionar Productos</span>
+          </div>
+        </a>
+
+        <a href="01-ListaInstructores.html">
+          <div class="nav__link collapse" id="instructores">
+            <ion-icon name="people" class="nav__icon"></ion-icon>
+            <span class="nav__name">Gestionar Clientes</span>
+          </div>
+        </a>
+
+        <a href="01-ListaInstructores.html">
+          <div class="nav__link collapse" id="instructores">
+            <ion-icon name="receipt-outline" class="nav__icon"></ion-icon>
+            <span class="nav__name">Facturador</span>
+          </div>
+        </a>
+
+        <a href="#" class="nav__link">
+          <ion-icon name="settings-outline" class="nav__icon"></ion-icon>
+          <span class="nav__name">Ajustes</span>
+        </a>
+      </div>
+
+      <a href="../index.html" class="nav__link">
+        <ion-icon name="log-out-outline" class="nav__icon"></ion-icon>
+        <span class="nav__name">Cerrar sesion</span>
+      </a>
+    </nav>
+  </div>
+
+  <header>
+    <ion-icon name="reorder-three" class="nav__toggle" id="nav-toggle"></ion-icon>
+
+
+    <div class="showHora">
+      <div class="time">
+        <span id="hora">00:00</span>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="contenido">
+      <h2>Historial de pedidos:</h2>
+      <div class="input-container">
+        <input placeholder="Buscar Pedido..." class="input" name="text" type="search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon">
+          <g stroke-width="0" id="SVGRepo_bgCarrier"></g>
+          <g stroke-linejoin="round" stroke-linecap="round" id="SVGRepo_tracerCarrier"></g>
+          <g id="SVGRepo_iconCarrier">
+            <rect fill="white"></rect>
+            <path
+              d="M7.25007 2.38782C8.54878 2.0992 10.1243 2 12 2C13.8757 2 15.4512 2.0992 16.7499 2.38782C18.06 2.67897 19.1488 3.176 19.9864 4.01358C20.824 4.85116 21.321 5.94002 21.6122 7.25007C21.9008 8.54878 22 10.1243 22 12C22 13.8757 21.9008 15.4512 21.6122 16.7499C21.321 18.06 20.824 19.1488 19.9864 19.9864C19.1488 20.824 18.06 21.321 16.7499 21.6122C15.4512 21.9008 13.8757 22 12 22C10.1243 22 8.54878 21.9008 7.25007 21.6122C5.94002 21.321 4.85116 20.824 4.01358 19.9864C3.176 19.1488 2.67897 18.06 2.38782 16.7499C2.0992 15.4512 2 13.8757 2 12C2 10.1243 2.0992 8.54878 2.38782 7.25007C2.67897 5.94002 3.176 4.85116 4.01358 4.01358C4.85116 3.176 5.94002 2.67897 7.25007 2.38782ZM9 11.5C9 10.1193 10.1193 9 11.5 9C12.8807 9 14 10.1193 14 11.5C14 12.8807 12.8807 14 11.5 14C10.1193 14 9 12.8807 9 11.5ZM11.5 7C9.01472 7 7 9.01472 7 11.5C7 13.9853 9.01472 16 11.5 16C12.3805 16 13.202 15.7471 13.8957 15.31L15.2929 16.7071C15.6834 17.0976 16.3166 17.0976 16.7071 16.7071C17.0976 16.3166 17.0976 15.6834 16.7071 15.2929L15.31 13.8957C15.7471 13.202 16 12.3805 16 11.5C16 9.01472 13.9853 7 11.5 7Z"
+              clip-rule="evenodd" fill-rule="evenodd"></path>
+          </g>
+        </svg>
+      </div>
+
+      <div class="citas">
+
+        <div class="cards">
+          <div class="img-section">
+            <p class="recent">Miercoles 06 de Septiembre</p>
+            <p class="hora">7:00 PM</p>
+          </div>
+          <div class="card-desc">
+            <div class="card-header">
+              <div class="card-mesa">Diagonal 68i #31-30 sur</div>
+            </div>
+            <div class="card-time">Detalles:</div>
+
+            <div class="card-titles">
+              <div class="producto">
+                Doble Carne en Combo
+                <div class="detalles">
+                  - Sin vegetales
+                </div>
+              </div>
+              <div class="precio">$ 25.000</div>
+            </div>
+
+            <div class="separador">
+              ------------------------------------------
+            </div>
+
+            <div class="card-titles">
+              <div class="producto">
+                Cachetona en Combo
+                <div class="detalles">
+                </div>
+              </div>
+              <div class="precio">$ 23.000</div>
+            </div>
+
+            <div class="separador">
+              ------------------------------------------
+            </div>
+
+            <div class="card-titles">
+              <div class="producto">
+                Punta de Anca
+                <div class="detalles">
+                  - 3/4
+                </div>
+              </div>
+              <div class="precio">$ 30.000</div>
+            </div>
+
+            <div class="separador">
+              ------------------------------------------
+            </div>
+
+            <div class="card-titles">
+              <div class="producto">
+                NEQUI
+              </div>
+              <div class="total">Total:</div>
+              <div class="precio">$ 75.000</div>
+            </div>
+            <div class="boton">
+              <button class="Btn-pedidos">Finalizar</button>
+            </div>
+            
+          </div>
+
+        </div>
+
+        <div class="cards">
+          <div class="img-section">
+            <p class="recent">Miercoles 06 de Septiembre</p>
+            <p class="hora">7:00 PM</p>
+          </div>
+          <div class="card-desc">
+            <div class="card-header">
+              <div class="card-mesa">Calle 58c sur #45 03</div>
+            </div>
+            <div class="card-time">Detalles:</div>
+
+            <div class="card-titles">
+              <div class="producto">
+                Doble Carne en Combo
+                <div class="detalles">
+                  - Sin vegetales
+                </div>
+              </div>
+              <div class="precio">$ 25.000</div>
+            </div>
+
+            <div class="separador">
+              ------------------------------------------
+            </div>
+
+            
+
+            <div class="card-titles">
+              <div class="producto">
+                Efectivo
+              </div>
+              <div class="total">Total:</div>
+              <div class="precio">$ 25.000</div>
+            </div>
+            <div class="boton">
+              <button class="Btn-pedidos">Finalizar</button>
+            </div>
+            
+          </div>
+
+        </div>
+
+        <div class="cards">
+          <div class="img-section">
+            <p class="recent">Miercoles 06 de Septiembre</p>
+            <p class="hora">7:00 PM</p>
+          </div>
+          <div class="card-desc">
+            <div class="card-header">
+              <div class="card-mesa">Carrera 30A #34 - 89 sur</div>
+            </div>
+            <div class="card-time">Detalles:</div>
+
+            
+
+            <div class="card-titles">
+              <div class="producto">
+                Cachetona en Combo
+                <div class="detalles">
+                </div>
+              </div>
+              <div class="precio">$ 23.000</div>
+            </div>
+
+            <div class="separador">
+              ------------------------------------------
+            </div>
+
+            <div class="card-titles">
+              <div class="producto">
+                Punta de Anca
+                <div class="detalles">
+                  - 3/4
+                </div>
+              </div>
+              <div class="precio">$ 30.000</div>
+            </div>
+
+            <div class="separador">
+              ------------------------------------------
+            </div>
+
+            <div class="card-titles">
+              <div class="producto">
+                Efectivo
+              </div>
+              <div class="total">Total:</div>
+              <div class="precio">$ 53.000</div>
+            </div>
+            <div class="boton">
+              <button class="Btn-pedidos">Finalizar</button>
+            </div>
+            
+          </div>
+
+        </div>
+        
+            
+          </div>
+
+        </div>
+
+      </div>
+
+  </section>
+
+
+
+  <!-- ===== IONICONS ===== -->
+  <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+    setTimeout(function () {
+      $(".loader_bg").fadeToggle();
+    }, 1000);
+  </script>
+  <!-- ===== MAIN JS ===== -->
+  <script src="../assets/js/ADMIN/main.js"></script>
+</body>
+
+</html>

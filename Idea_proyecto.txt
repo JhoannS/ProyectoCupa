@@ -1,0 +1,48 @@
+Cupa burguer:
+un sistema donde tendra interfaz de pagina universal e individual:
+	- Tendra login de acceso.
+
+
+ADMINISTRADOR:
+un sistema el cual se gestionara los pedidos, productos, usuarios(clientes) y se generara una factura automaticamente 
+con los datos ingresados, tanto para el cliente como el administrador, y esa informacion quedara almacenada en un tabla como 
+historial:
+
+	- CRUD DE PERFIL. 
+
+	- CRUD USUARIOS:
+		- Administrador y clientes.
+			- Si el cliente no desea registrarse, podra elegir cliente ocacional.
+
+	- CRUD PEDIDOS:
+		- Pedidos de mesa.
+		- Pedidos en linea.
+
+	- CRUD PRODUCTOS:
+		- Platos disponibles con detalles.
+
+	- VIEWS FACTURAS:
+		- Historial.
+
+USUARIOS:
+un sistema el cual los usuarios podran pedir en linea escogiendo metodo de compra, ya sea en domicilio o recoger en tienda
+podra observar	el menu completo, podra registrarse, podra dejar un comentario ya sea positivo o negativo:
+	
+	- CRUD PEDIDOS(carrito):
+		- Metodos de pago.
+		- Metodo de obtension.
+
+	- CRUD DE PERFIL.
+
+	- CRUD DE COMENTARIOS.
+
+MESEROS:
+un sistema donde los mesero podran tomar las ordenes por medio de tablets, y esa informacion suministrada llegara al cocinero de
+manera ordenada con detalles especificos.
+
+	- CRUD PEDIDOS.
+
+COCINEROS:
+un sistema donde el cocinero recibira la informacion del mesero con detalles especificos, el solo podra observar la informacion:
+
+	- VIEWS PEDIDOS.

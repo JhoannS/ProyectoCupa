@@ -1,0 +1,189 @@
+{% extends './layout.html' %}
+
+{% block title %}Editar Empleado {{empleado.0}}{% endblock %}
+
+{% block customcss %}
+<link rel="stylesheet" href="{{url_for("static",filename="css/index_admin.css")}}">
+{% endblock %}
+
+{% block body %}
+</head>
+<div class="loader_bg">
+  <div class="leap-frog">
+    <div class="leap-frog__dot"></div>
+    <div class="leap-frog__dot"></div>
+    <div class="leap-frog__dot"></div>
+  </div>
+</div>
+
+<body id="body-pd">
+  <div class="l-navbar" id="navbar">
+    <nav class="nav">
+      <div>
+        <div class="nav__brand">
+          <img src="{{url_for('static',filename="img/logo.jpg")}}" alt="Logo" class="photoNav" />
+          <a href="/" class="nav__logo">Cupa Burger</a>
+        </div>
+      </div>
+
+      <div class="nav__list">
+        <a href="/index" class="nav__link">
+          <ion-icon name="home-outline" class="nav__icon"></ion-icon>
+          <span class="nav__name">Inicio</span>
+        </a>
+
+
+        <a href="/">
+          <div class="nav__link collapse" id="usuario">
+            <ion-icon name="document-text-outline" class="nav__icon"></ion-icon>
+            <span class="nav__name">Gestionar Pedidos</span>
+          </div>
+        </a>
+
+        <a href="/gestionarProductos">
+          <div class="nav__link active" id="instructores">
+            <ion-icon name="grid-outline" class="nav__icon"></ion-icon>
+            <span class="nav__name">Gestionar Productos</span>
+          </div>
+        </a>
+
+        <a href="/gestionarUsuarios">
+          <div class="nav__link collapse" id="instructores">
+            <ion-icon name="people" class="nav__icon"></ion-icon>
+            <span class="nav__name">Gestionar Usuarios</span>
+          </div>
+        </a>
+
+
+        <a href="/facturas">
+          <div class="nav__link collapse" id="instructores">
+            <ion-icon name="receipt-outline" class="nav__icon"></ion-icon>
+            <span class="nav__name">Facturador</span>
+          </div>
+        </a>
+
+        <a href="#" class="nav__link">
+          <ion-icon name="settings-outline" class="nav__icon"></ion-icon>
+          <span class="nav__name">Ajustes</span>
+        </a>
+      </div>
+
+      <a href="../index.html" class="nav__link">
+        <ion-icon name="log-out-outline" class="nav__icon"></ion-icon>
+        <span class="nav__name">Cerrar sesion</span>
+      </a>
+    </nav>
+  </div>
+
+  <header>
+    <ion-icon name="reorder-three" class="nav__toggle" id="nav-toggle"></ion-icon>
+
+
+    <div class="showHora">
+      <div class="time">
+        <span id="hora">00:00</span>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <section>
+      <div class="contenido">
+        <h2><a href="01-ListaInstructores.html"> Gestion Clientes</a></h2>
+        <div class="usuarios">
+
+          <div class="table_header">
+            <h2>Editar Empleado: {{empleado.1}} {{empleado.2}}</h2>
+            <button class="shadow__btn" id="open">
+              Editar Empleado <ion-icon name="create-outline" id="add"></ion-icon>
+            </button>
+          </div>
+
+          
+          <div class="table_fotter">
+            
+            {% with messages = get_flashed_messages() %}
+          {% if messages %}
+          {% for message in messages%}
+          <p>{{message}}</p>
+          {% endfor %}
+          {% endif %}
+          {% endwith %}
+          </div>
+        </div>
+      </div>
+      </div>
+
+      
+
+      <!-- EDITAR MODAL -->
+      <div id="modal_container" class="modal-container">
+        <div class="modal">
+          <form class="form" method="POST" action="/editarEmpleado/{{empleado.0}}">
+            <input type="hidden" name="csrf_token" value="{{csrf_token() }}">
+            <p class="title">Editar Empleado</p>
+            <p class="message">Ten en cuenta el empleado que editaras.</p>
+            <div class="flex">
+              <label>
+                <input placeholder="" type="text" class="input" name="nombreEmp" value="{{empleado.1}}">
+                <span>Nombre</span>
+              </label>
+
+              <label>
+                <input placeholder="" type="text" class="input" name="apellidoEmp" value="{{empleado.2}}">
+                <span>Apellidos</span>
+              </label>
+
+              <label>
+                <input placeholder="" type="number" class="input" name="IDEmp" value="{{empleado.0}}">
+                <span>Documento ID</span>
+              </label>
+            </div>
+            <div class="flex">
+              <label>
+                <input placeholder="" type="number" class="input" name="telefonoEmp" value="{{empleado.3}}">
+                <span>Telefono</span>
+              </label>
+
+              <label>
+                <input placeholder="" type="text" class="input" name="usuarioEmp" value="{{empleado.6}}">
+                <span>Usuario</span>
+              </label>
+
+            </div>
+
+            <div class="flex">
+              <div class="select">
+                <select name="cargo" id="format" >
+                   <option selected disabled value="{{empleado.5}}">Selecciona un cargo</option>
+                   <option value="1" name="cargo">1. Administrador</option>
+                   <option value="2" name="cargo">2. Mesero</option>
+                   <option value="3" name="cargo">3. Cocinero</option>
+                </select>
+             </div>
+            </div>
+            <div class="botones-form">
+              <span class="cancelar" id="close">Cancelar</span>
+              <button class="crear" name="crear" type="submit">Editar</button>
+            </div>
+          </form>
+          
+        </div>
+      </div>
+
+    </section>
+  </section>
+
+  {% block script %}
+  <script src="{{url_for("static",filename="js/main.js")}}"></script>
+
+  <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        setTimeout(function () {
+            $(".loader_bg").fadeToggle();
+        }, 1000);
+    </script>
+  {% endblock %}
+
+  {% endblock %}
